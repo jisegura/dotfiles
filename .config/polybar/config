@@ -1,0 +1,219 @@
+;-------------------------------------------------------------------------------
+;	V A R I A B L E S
+;-------------------------------------------------------------------------------
+
+[colors]
+background = #323232
+background-alt = #131313
+
+foreground = #B2B2B2
+foreground-alt = #ee3333
+
+trans = #DA292b2e
+white = #EEEEEE
+orange = #E95420
+grey = #444444
+grey2 = #AEA79F
+grey3 = #3C3B37
+pink = #d75f87
+blue = #4f97d7
+purple = #875faf
+green = #20ad80
+red = #ee3333
+
+[bar/bartop]
+width = 100%
+height = 14
+radius = 1.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.grey2}
+
+border-size = 2
+border-color = #131313
+
+font-0 = Hack:pixelsize=10:weight=bold;2
+font-1 = Hack:pixelsize=32;2
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=9;2"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
+font-4 = "Font Awesome 5 Brands:pixelsize=9;2"
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+modules-left = i3 arrowleft0 i3icon arrowleft1
+modules-center = date
+modules-right = volume arrowright0 powermenu
+
+[module/arrowleft]
+; arrow abstract
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = #000000
+content-background = #FFFFFF
+
+[module/arrowleft0]
+; background-alt to orange
+inherit = module/arrowleft
+content-foreground = ${colors.background-alt}
+content-background = ${colors.orange}
+
+[module/arrowleft1]
+; orange to background
+inherit = module/arrowleft
+content-foreground = ${colors.orange}
+content-background = ${colors.background}
+
+[module/arrowright]
+; arrow abstract
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = #000000
+content-background = #FFFFFF
+
+[module/arrowright0]
+; background-alt to background
+inherit = module/arrowright
+content-foreground = ${colors.background-alt}
+content-background = ${colors.background}
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+
+index-sort = true
+;enable-click = false
+enable-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode = " %mode% "
+label-mode-padding = 1
+label-mode-foreground = ${colors.red}
+label-mode-background = ${colors.background-alt}
+
+; focused = Active workspace on focused monitor
+label-focused = " %index% "
+label-focused-foreground = ${colors.orange}
+label-focused-background = ${colors.background-alt}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = " %index% "
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.background-alt}
+
+; visible = Active workspace on unfocused monitor
+label-visible = " %index% "
+label-visible-foreground = ${colors.background}
+label-visible-background = ${colors.background-alt}
+
+; urgent = Workspace with urgency hint set
+label-urgent = " %index% "
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.background-alt}
+
+[module/i3icon]
+type = internal/i3
+format = <label-state>
+
+enable-click = false
+enable-scroll = false
+
+ws-icon-0 = 1; home
+ws-icon-1 = 2; firefox
+ws-icon-2 = 3; chrome
+ws-icon-3 = 4; terminal
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8; slack
+ws-icon-8 = 9; telegram
+ws-icon-9 = 10; spotify
+ws-icon-default =
+
+label-focused = "%icon% "
+label-focused-foreground = ${colors.white}
+label-focused-background = ${colors.orange}
+
+label-unfocused =
+label-urgent =
+
+
+[module/title]
+type = internal/xwindow
+
+format-background = ${colors.background}
+format-foreground = ${colors.purple}
+format-padding = 1
+
+label = %title%
+label-maxlen = 50
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = " %Y-%m-%d"
+
+time= %H:%M:%S
+
+label = %date% %time%
+label-foreground = ${colors.blue}
+label-background = ${colors.background}
+
+[module/volume]
+type = internal/volume
+
+;mapping = true
+format-volume = <ramp-volume><label-volume>
+
+label-volume = %percentage%%
+label-volume-foreground = ${colors.white}
+label-volume-background = ${colors.grey}
+label-muted = " MUTED "
+label-muted-foreground = ${colors.white}
+label-muted-background = ${colors.grey}
+
+ramp-volume-0 = " VOL "
+ramp-volume-0-foreground = ${colors.white}
+ramp-volume-0-background = ${colors.grey}
+ramp-volume-1 = " VOL "
+ramp-volume-1-foreground = ${colors.white}
+ramp-volume-1-background = ${colors.grey}
+ramp-volume-2 = " VOL "
+ramp-volume-2-foreground = ${colors.white}
+ramp-volume-2-background = ${colors.grey}
+ramp-volume-3 = " VOL "
+ramp-volume-3-foreground = ${colors.blue}
+ramp-volume-3-background = ${colors.grey}
+
+[module/powermenu]
+type = custom/menu
+expand-right = false
+format-spacing = 0
+
+label-open = "  "
+label-open-foreground = ${colors.foreground}
+label-open-background = ${colors.background-alt}
+label-close = "  "
+label-close-foreground = ${colors.red}
+label-close-background = ${colors.background-alt}
+
+menu-0-0 = "  "
+menu-0-0-foreground = ${colors.foreground}
+menu-0-0-background = ${colors.background-alt}
+menu-0-0-exec = menu-open-1
+menu-0-1 = "  "
+menu-0-1-foreground = ${colors.foreground}
+menu-0-1-background = ${colors.background-alt}
+menu-0-1-exec = menu-open-2
+menu-0-2 = "  "
+menu-0-2-foreground = ${colors.foreground}
+menu-0-2-background = ${colors.background-alt}
+menu-0-2-exec = menu-open-3
+
+
